@@ -1,8 +1,5 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
-
+import java.util.*;
+import java.util.HashMap;
 public class Main {
     public static void main(String[] args) {
 
@@ -25,40 +22,58 @@ public class Main {
         }
 
         /// Modyfikacje Listy studentow:
+        boolean running = true;
+        while (running) {
+            System.out.println("--------Menu------------");
+            System.out.println("1- Lista Studentow");
+            System.out.println("2- Dodaj Studenta");
+            System.out.println("3- Usun Studenta");
+            System.out.println("4- Podzial na klasy");
+            System.out.println("6 - Wyjdz z Dziennika");
 
 
-        System.out.println("--------Menu------------");
-        System.out.println("1- Lista Studentow");
-        System.out.println("2- Dodaj Studenta");
-        System.out.println("3- Usun Studenta");
-        System.out.println("4- Podzial na klasy");
+            String input = scanner.next();
+            switch (input) {
 
-        String input = scanner.next();
-        switch (input) {
+                // 1 - Lista
+                case "1" -> System.out.println(studentList);
+                // 2 - Dodaj osobe
+                case "2" -> {
+                    System.out.println("Podaj imie i nazwisko studenta: ");
+                    String studentPD = scanner.nextLine();
+                    studentList.add(studentPD);
+                    System.out.println("Dodano Studenta: " + studentPD);
+                }
+                // 3 - Usun osobe
+                case "3" -> {
+                    System.out.println("Podaj studenta ktory ma byc usuniety: ");
+                    String personThrow = scanner.next();
+                    studentList.remove(personThrow);
+                    System.out.println(studentList);
 
-            // 1 - Lista
-            case "1" -> System.out.println(studentList);
-            // 2 - Dodaj osobe
-            case "2" -> {
-                System.out.println("Podaj imie i nazwisko studenta: ");
-                String studentPD = scanner.nextLine();
-                studentList.add(studentPD);
+                }
+                case "4" -> {
+
+                   HashMap<String, List<String>> studentClasses = new HashMap<>();
+                   studentClasses.put("KlasaA", studentList);
+                   studentClasses.put("KlasaB", studentList);
+
+
+
+
+
+                }
+
+                // 9 - Zakoncz program
+                case "5" -> {
+                    System.out.println("Zakonczenie programu");
+                    running = false;
+                }
             }
-            // 3 - Usun osobe
-            case "3" -> {
-                System.out.println("Podaj studenta ktory ma byc usuniety: ");
-                String personThrow = scanner.next();
-                studentList.remove(personThrow);
-                System.out.println(studentList);
+            //scanner.close();
 
-            }
-
-
-            // 9 - Zakoncz program
-            // 10 - podzial na klasy ( mapy)
 
         }
-
 
     }
 
