@@ -1,5 +1,6 @@
 import java.util.*;
 import java.util.HashMap;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -53,13 +54,31 @@ public class Main {
 
                 }
                 case "4" -> {
+                    HashMap<String, List<String>> studentClasses = new HashMap<>();
+                    List<String> classA = new ArrayList<>();
+                    List<String> classB = new ArrayList<>();
+                    studentClasses.put("KlasaA", classA);
+                    studentClasses.put("KlasaB", classB);
+                    System.out.println("Wpisz do jakiej Klasy chcialbys dodac studenta? ");
+                    scanner.nextLine();
+                    switch (scanner.nextLine()) {
+                        case "KlasaA" -> {
+                            System.out.println("Podaj imie i nazwisko studenta ktory ma byc dodany do klasy A: ");
+                            String studentChangeClassA = scanner.nextLine();
+                            classA.add(studentChangeClassA);
 
-                   HashMap<String, List<String>> studentClasses = new HashMap<>();
-                   studentClasses.put("KlasaA", studentList);
-                   studentClasses.put("KlasaB", studentList);
+                        }
+                        case "KlasaB" -> {
+                            System.out.println("Podaj imie i nazwisko studenta ktory ma byc dodany do klasy A: ");
+                            String studentChangeClassB = scanner.nextLine();
+                            classB.add(studentChangeClassB);
+                        }
+
+                    }
+                    System.out.println(studentClasses);
 
 
-
+// utworzyc hashmapy z dwama rodzajami kluczy i potem mozliwsoc dodawania do nich uczniow
 
 
                 }
