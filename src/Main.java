@@ -53,6 +53,7 @@ public class Main {
                     System.out.println(studentList);
 
                 }
+                // Podzial na klasy 
                 case "4" -> {
                     HashMap<String, List<String>> studentClasses = new HashMap<>();
                     List<String> classA = new ArrayList<>();
@@ -62,6 +63,7 @@ public class Main {
                     System.out.println("Wpisz do jakiej Klasy chcialbys dodac studenta? ");
                     scanner.nextLine();
                     switch (scanner.nextLine()) {
+
                         case "KlasaA" -> {
                             System.out.println("Podaj imie i nazwisko studenta ktory ma byc dodany do klasy A: ");
                             String studentChangeClassA = scanner.nextLine();
@@ -73,12 +75,12 @@ public class Main {
                             String studentChangeClassB = scanner.nextLine();
                             classB.add(studentChangeClassB);
                         }
+                        // dodawanie do poszczegolnbych klas studentow dziala, ale w momencie kiedy chcemy dodac nastepnego to poprzedni jest nim zastepowany
+                        // przydaloby sie tez dodac opcje zamkniecia programu bo obcecna nie dziala
+
 
                     }
                     System.out.println(studentClasses);
-
-
-// utworzyc hashmapy z dwama rodzajami kluczy i potem mozliwsoc dodawania do nich uczniow
 
 
                 }
