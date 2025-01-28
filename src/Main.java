@@ -6,13 +6,14 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         List<String> studentList = new ArrayList<>();
+        List<String> classA = new ArrayList<>();
+        List<String> classB = new ArrayList<>();
 
-
-        System.out.println("Ilu jest studentow? ");
+        System.out.print("Ilu jest studentow? ");
         int studentCount = scanner.nextInt();
         scanner.skip("\n");
         for (int i = 0; i < studentCount; i++) {
-            System.out.println("Podaj imie i nazwisko studenta: ");
+            System.out.print("Podaj imie i nazwisko studenta: ");
             String studentPD = scanner.nextLine();
             studentList.add(studentPD);
         }
@@ -30,6 +31,7 @@ public class Main {
             System.out.println("2- Dodaj Studenta");
             System.out.println("3- Usun Studenta");
             System.out.println("4- Podzial na klasy");
+            System.out.println("5- Pokaz Klasy");
             System.out.println("6 - Wyjdz z Dziennika");
 
 
@@ -56,12 +58,12 @@ public class Main {
                 // Podzial na klasy 
                 case "4" -> {
                     HashMap<String, List<String>> studentClasses = new HashMap<>();
-                    List<String> classA = new ArrayList<>();
-                    List<String> classB = new ArrayList<>();
                     studentClasses.put("KlasaA", classA);
                     studentClasses.put("KlasaB", classB);
                     System.out.println("Wpisz do jakiej Klasy chcialbys dodac studenta? ");
                     scanner.nextLine();
+
+
                     switch (scanner.nextLine()) {
 
                         case "KlasaA" -> {
@@ -76,7 +78,6 @@ public class Main {
                             classB.add(studentChangeClassB);
                         }
                         // dodawanie do poszczegolnbych klas studentow dziala, ale w momencie kiedy chcemy dodac nastepnego to poprzedni jest nim zastepowany
-                        // przydaloby sie tez dodac opcje zamkniecia programu bo obcecna nie dziala
 
 
                     }
@@ -84,9 +85,12 @@ public class Main {
 
 
                 }
-
-                // 9 - Zakoncz program
                 case "5" -> {
+                    System.out.println("Klasa A: " + classA);
+                    System.out.println("Klasa B: " + classB);
+                }
+                // 9 - Zakoncz program
+                case "6" -> {
                     System.out.println("Zakonczenie programu");
                     running = false;
                 }
