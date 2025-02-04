@@ -6,9 +6,10 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         List<String> studentList = new ArrayList<>();
-        HashMap<String, String> studentClasses = new HashMap<>();
+        HashMap<String, List<String>> studentClasses = new LinkedHashMap<>();
+        studentClasses.put("Klasa A", new ArrayList<>()); // tworzenie listy dla studentow w ten sposob do 
+        studentClasses.put("Klasa B", new ArrayList<>());   // jednego klucza przypisuje kilku uczniow
         String studentPD;
-
         System.out.print("Ilu jest studentow? ");
 
         int studentCount = scanner.nextInt();
@@ -23,53 +24,33 @@ public class Main {
         while (running) {
 
             menuLanuch();
-
             String input = scanner.next();
+            scanner.nextLine();
             switch (input) {
 
                 // 1 - Lista
-
                 case "1" -> System.out.println(studentList);
-
                 // 2 - Dodaj osobe
-
-                case "2" -> {
-                    studentAdd(scanner, studentList);
-                }
-
+                case "2" -> studentAdd(scanner, studentList);
                 // 3 - Usun osobe
-
-                case "3" -> {
-                    deletingStudent(scanner, studentList);
-
-                }
-
-                // Podzial na klasy 
-
+                case "3" -> deletingStudent(scanner, studentList);
+                // Podzial na klasy
                 case "4" -> {
-                    // mapper studentow     lista klass plus lista studentow
-
-                    System.out.println("Wpisz do jakiej Klasy chcialbys dodac studenta? ");
+                    System.out.println("Wpisz do jakiej Klasy chcialbys dodac studenta? "); // mapper studentow     lista klass plus lista studentow
                     scanner.nextLine();
-
-
                     switch (scanner.nextLine()) {
-
                         case "Klasa A" -> selectClassA(scanner, studentClasses);
                         case "Klasa B" -> selectClassB(scanner, studentClasses);
-
-
                     }
                 }
-                case "5" -> {
-                    System.out.println(studentClasses);
-                }
+                case "5" -> System.out.println(studentClasses);
                 // 9 - Zakoncz program
-                case "6" -> {
-                    running = isRunning();
-                }
+                case "6" -> running = isRunning();
+                default -> throw new IllegalStateException("Unexpected value: " + input);
             }
+
         }
+        scanner.close();
     }
 
     private static void listSizing(List<String> studentList) {
@@ -88,22 +69,22 @@ public class Main {
         }
     }
 
-    private static void selectClassA(Scanner scanner, HashMap<String, String> studentClasses) {
+    private static void selectClassA(Scanner scanner, HashMap<String, List<String>> studentClasses) {
         System.out.println("Podaj imie i nazwisko studenta ktory ma byc dodany do klasy A: ");
         String whichA = scanner.nextLine();
-        studentClasses.put("Klasa A", whichA);
+        studentClasses.get("Klasa A").add(whichA);
     }
 
-    private static void selectClassB(Scanner scanner, HashMap<String, String> studentClasses) {
+    private static void selectClassB(Scanner scanner, HashMap<String, List<String>> studentClasses) {
         System.out.println("Podaj imie i nazwisko studenta ktory ma byc dodany do klasy A: ");
         String whichB = scanner.nextLine();
-        studentClasses.put("Klasa B", whichB);
+        studentClasses.get("Klasa B").add(whichB);
     }
 
 
     private static void deletingStudent(Scanner scanner, List<String> studentList) {
         System.out.println("Podaj studenta ktory ma byc usuniety: ");
-        String personThrow = scanner.next();
+        String personThrow = scanner.nextLine();
         studentList.remove(personThrow);
         System.out.println(studentList);
     }
