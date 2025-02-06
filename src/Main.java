@@ -37,10 +37,10 @@ public class Main {
                 // Podzial na klasy
                 case "4" -> {
                     System.out.println("Wpisz do jakiej Klasy chcialbys dodac studenta? "); // mapper studentow     lista klass plus lista studentow
-                    scanner.nextLine();
+
                     switch (scanner.nextLine()) {
-                        case "Klasa A" -> selectClassA(scanner, studentClasses);
-                        case "Klasa B" -> selectClassB(scanner, studentClasses);
+                        case "1" -> selectClassA(scanner, studentClasses);
+                        case "2" -> selectClassB(scanner, studentClasses);
                     }
                 }
                 case "5" -> System.out.println(studentClasses);
@@ -69,18 +69,17 @@ public class Main {
         }
     }
 
-    private static void selectClassA(Scanner scanner, HashMap<String, List<String>> studentClasses) {
+    private static void selectClassA(Scanner scanner, Map<String, List<String>> studentClasses) {
         System.out.println("Podaj imie i nazwisko studenta ktory ma byc dodany do klasy A: ");
         String whichA = scanner.nextLine();
         studentClasses.get("Klasa A").add(whichA);
     }
 
-    private static void selectClassB(Scanner scanner, HashMap<String, List<String>> studentClasses) {
-        System.out.println("Podaj imie i nazwisko studenta ktory ma byc dodany do klasy A: ");
+    private static void selectClassB(Scanner scanner, Map<String, List<String>> studentClasses) {
+        System.out.println("Podaj imie i nazwisko studenta ktory ma byc dodany do klasy B: ");
         String whichB = scanner.nextLine();
         studentClasses.get("Klasa B").add(whichB);
     }
-
 
     private static void deletingStudent(Scanner scanner, List<String> studentList) {
         System.out.println("Podaj studenta ktory ma byc usuniety: ");
