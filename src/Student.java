@@ -7,10 +7,10 @@ public class Student {
     // pola:
 
 
- public  String name;
-public  int id;
-public  double grade;
-public static List<Student> studentsList = new ArrayList<>();
+    public String name;
+    public int id;
+    public double grade;
+    public static List<Student> studentsList = new ArrayList<>();
 
     //konstruktory:
 
@@ -22,7 +22,12 @@ public static List<Student> studentsList = new ArrayList<>();
 
     // 3 - gettery i settery (+metody)
 
-    public  void displayStudentInfo(Student student) {
+    public String getName() {
+        return name;
+    }
+
+
+    public void displayStudentInfo(Student student) {
         System.out.println("Imie studenta: " + name);
         System.out.println("Indeks studenta: " + id);
         System.out.println("Ocena koncowa studenta: " + grade);
@@ -33,12 +38,14 @@ public static List<Student> studentsList = new ArrayList<>();
     public static void studentAddToList(Scanner scanner) {
         System.out.println("Podaj imie i nazwisko studenta:");
         String name = scanner.next();
+        scanner.nextLine();
         //System.out.println("Podaj numer indeksu ");
         System.out.println("Podaj ocene koncowa studenta: ");
         double grade = scanner.nextDouble();
-        studentsList.add(new Student(name,grade));
+        studentsList.add(new Student(name, grade));
 
     }
+
     public static void studentRemoveFromList(Scanner scanner) {
 
         System.out.print("Nazwa studenta: ");
@@ -51,5 +58,6 @@ public static List<Student> studentsList = new ArrayList<>();
     public String toString() {
         return name + grade;
     }
+
 
 }
