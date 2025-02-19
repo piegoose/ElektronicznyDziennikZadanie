@@ -1,18 +1,17 @@
-import java.sql.SQLOutput;
 import java.util.*;
+
+// pola raczej prywatne i nie statyczne uzywamy getterow setterow, metody zazwczyaj sa publiczne nie statyczne
+// static to sie odnisi i dzieli dla wszyskich, pensja, wspoldzielony kontekst
 
 public class Class {
     // 1 pola
-    public static HashMap<String, List<Student>> studentClasses = new LinkedHashMap<>();
-
-    public static void setStudentClasses(HashMap<String, List<Student>> studentClasses) {
-
-    }
-
+    private  HashMap<String, List<Student>> studentClasses = new LinkedHashMap<>();
+    //konstruktory
 
     // 3 Metody
+/// static
 
-    public static void createClass() {
+    public   void createClass() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Ile klas chcesz utworzyc?");
         int classNum = sc.nextInt();
@@ -25,12 +24,14 @@ public class Class {
         System.out.println(studentClasses);
     }
 
-    public static void assignStudentToClass() {
+    public  void assignStudentToClass(Student student) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Którego studenta chcesz dodać do klasy?");
         String studentName = scanner.nextLine();
-        Student foundStudent = findStudentByName(studentName);
-        if (studentCheck(foundStudent)) return;
+        Student foundStudent = findStudentByName(studentName, student);
+        if (studentCheck(foundStudent)){
+            return;
+        }
         System.out.println("Do jakiej klasy chcesz dodać studenta?");
         String studentClass = scanner.nextLine();
         addingStudent(studentClass);
@@ -38,21 +39,22 @@ public class Class {
         System.out.println("Dodano studenta " + foundStudent.getName() + " do klasy " + studentClass);
     }
 
-    public static void classDisplay(){
+
+
+    public  void classDisplay(){
         System.out.println(studentClasses);
     }
 
-
     /// Metody pomocnicze
 
-    private static void addingStudent(String studentClass) {
+    private  void addingStudent(String studentClass) {
         if (!studentClasses.containsKey(studentClass)) {
             studentClasses.put(studentClass, new ArrayList<>());
         }
     }
 
 
-    private static boolean studentCheck(Student foundStudent) {
+    private  boolean studentCheck(Student foundStudent) {
         if (foundStudent == null) {
             System.out.println("Student o podanym imieniu nie istnieje!");
             return true;
@@ -60,8 +62,8 @@ public class Class {
         return false;
     }
 
-    private static Student findStudentByName(String studentName) {
-        for (Student s : Student.studentsList) {
+    private Student findStudentByName(String studentName, Student student) {
+        for (Student s : student.getStudentsList()) {  // Teraz używamy instancji Student
             if (s.getName().equalsIgnoreCase(studentName)) {
                 return s;
             }

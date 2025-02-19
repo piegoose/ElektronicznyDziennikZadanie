@@ -1,14 +1,11 @@
-import java.util.*;
-import java.util.HashMap;
 import java.util.Scanner;
 
-import static java.awt.SystemColor.menu;
 
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println(Class.studentClasses);
-
+        Student student = new Student();
+        Class class1 = new Class();
         Scanner scanner = new Scanner(System.in);
         System.out.println();
         System.out.println(" ---- WITAJ W ELEKTROCZNICZNYM DZIENNNIKU --- ");
@@ -17,17 +14,17 @@ public class Main {
         while (running) {
             MenuLauncher.menuLaunch();
             switch (scanner.nextInt()) {
-                case 1 -> System.out.println(Student.studentsList); ///
-                case 2 -> Student.studentAddToList(scanner);  ///
-                case 3 -> Student.studentRemoveFromList(scanner);
+                case 1 -> System.out.println(student.getStudentsList()); ///
+                case 2 -> student.studentAddToList(scanner);  ///
+                case 3 -> student.studentRemoveFromList(scanner);
                 case 4 -> Teacher.addTeacher(scanner);
                 case 5 -> Teacher.removeTeacher(scanner);
                 case 6 -> System.out.println(Teacher.teacherList);
                 case 7 -> {
-                    Class.createClass(); /// dziala
-                    Class.assignStudentToClass();
+                    class1.createClass(); /// dziala
+                    class1.assignStudentToClass();
                 }
-                case 8 ->Class.classDisplay();// wypisanie klas
+                case 8 ->class1.classDisplay();// wypisanie klas
                 case 9 -> {
                     running = false;
                     System.out.println("Zamykanie ..");
