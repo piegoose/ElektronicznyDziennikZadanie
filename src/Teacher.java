@@ -4,10 +4,13 @@ import java.util.Scanner;
 
 public class Teacher {
 
-    public  String name;
-    public  int age;
-    public  String subject;
-    public static List<Teacher> teacherList = new ArrayList<>();
+    private  String name;
+    private  int age;
+    private  String subject;
+    private static List<Teacher> teacherList = new ArrayList<>();
+
+    public Teacher() {
+    }
 
     @Override
     public String toString() {
@@ -18,6 +21,11 @@ public class Teacher {
         this.subject = subject;
         this.age = age;
         this.name = name;
+
+    }
+
+    public void setTeacher(Teacher teacher) {
+        teacherList.add(teacher);
     }
 
     public static void addTeacher(Scanner sc) {
