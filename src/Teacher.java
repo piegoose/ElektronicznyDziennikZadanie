@@ -1,16 +1,25 @@
+import org.w3c.dom.ls.LSOutput;
+
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Teacher {
 
-    private  String name;
-    private  int age;
-    private  String subject;
-    private static List<Teacher> teacherList = new ArrayList<>();
+    private String name;
+    private int age;
+    private String subject;
+    private final List<Teacher> teacherList = new ArrayList<>();
 
     public Teacher() {
+
     }
+
+    public List<Teacher> getTeacherList() {
+        return teacherList;
+    }
+
 
     @Override
     public String toString() {
@@ -24,25 +33,36 @@ public class Teacher {
 
     }
 
-    public void setTeacher(Teacher teacher) {
-        teacherList.add(teacher);
-    }
-
-    public static void addTeacher(Scanner sc) {
-       Scanner scanner = new Scanner(System.in);
+    public void addTeacher(Scanner scanner) {
+        scanner.skip("\n");
+        Scanner sc = new Scanner(System.in);
         System.out.println("Podaj imie i nazwisko nauczyciela: ");
-        String name = scanner.nextLine();
+        name = sc.nextLine();
+        System.out.println("Podaj przedmiot jakiego uczy: ");
+        subject = sc.nextLine();
         System.out.println("Podaj wiek nauczyciela: ");
-        int age = scanner.nextInt();
-        System.out.println("Podaj jakiego przedmiotu uczy: ");
-        String subject = scanner.next();
-        teacherList.add(new Teacher(name,age,subject));
+        age = sc.nextInt();
+        teacherList.add(new Teacher(subject, age, name));
 
     }
-    public static void removeTeacher(Scanner sc) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Podaj imie i nazwisko nauczyciela: ");
-        teacherList.removeIf(teacher -> teacher.name.equals(scanner.nextLine()));
+
+    public void removeTeacher(Scanner scanner) {
+        scanner.skip("\n");
+        System.out.println("Podaj jakiego nauczyicela chcesz usynac");
+        String removeT = scanner.nextLine();
+        teacherList.remove(findTeacherByName(removeT));
+
     }
+
+    private Teacher findTeacherByName(String teacherName) {
+        for (Teacher t : teacherList) {
+            if (t.name.equals(teacherName)) {
+                return t;
+            }
+        }
+        return null;
+
+    }
+
 
 }
