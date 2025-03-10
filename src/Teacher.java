@@ -4,12 +4,22 @@ import java.util.Scanner;
 
 public class Teacher {
 
-    private  String name;
-    private  int age;
-    private  String subject;
-    private static List<Teacher> teacherList = new ArrayList<>();
+    private String name;
+    private int age;
+    private String subject;
+    private final List<Teacher> teacherList = new ArrayList<>();
 
     public Teacher() {
+
+    }
+
+    public List<Teacher> getTeacherList() {
+        return teacherList;
+    }
+
+
+    private String getTeacherName() {
+        return name;
     }
 
     @Override
@@ -24,25 +34,24 @@ public class Teacher {
 
     }
 
-    public void setTeacher(Teacher teacher) {
-        teacherList.add(teacher);
-    }
 
-    public static void addTeacher(Scanner sc) {
-       Scanner scanner = new Scanner(System.in);
+    public void addTeacher(Scanner scanner) {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj imie i nazwisko nauczyciela: ");
         String name = scanner.nextLine();
         System.out.println("Podaj wiek nauczyciela: ");
         int age = scanner.nextInt();
         System.out.println("Podaj jakiego przedmiotu uczy: ");
         String subject = scanner.next();
-        teacherList.add(new Teacher(name,age,subject));
+        teacherList.add(new Teacher(name, age, subject));
 
     }
-    public static void removeTeacher(Scanner sc) {
-        Scanner scanner = new Scanner(System.in);
+
+    public void removeTeacher(Scanner scanner) { //nie dziala
+        Scanner sc = new Scanner(System.in);
         System.out.println("Podaj imie i nazwisko nauczyciela: ");
-        teacherList.removeIf(teacher -> teacher.name.equals(scanner.nextLine()));
+        String teacherName = sc.nextLine();
+        teacherList.remove(teacherName);
     }
 
 }

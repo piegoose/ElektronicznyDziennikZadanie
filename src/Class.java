@@ -4,14 +4,9 @@ import java.util.*;
 // static to sie odnisi i dzieli dla wszyskich, pensja, wspoldzielony kontekst
 
 public class Class {
-    // 1 pola
-    private HashMap<String, List<Student>> studentClasses = new LinkedHashMap<>();
-    private List<Student> studentsList = new ArrayList<>();
-    //konstruktory
 
-    // 3 Metody
-
-    /// static
+    private final HashMap<String, List<Student>> studentClasses = new LinkedHashMap<>();
+    private final List<Student> studentsList = new ArrayList<>();
 
 
     public void studentAddToList(Scanner scanner) {

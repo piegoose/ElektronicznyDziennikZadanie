@@ -16,16 +16,16 @@ public class Main {
             MenuLauncher.menuLaunch();
             Student instantStudent = new Student("Jedrzej Sikora",4);
             class1.setStudentsList(instantStudent);
-            Teacher instantTeacher = new Teacher("Angielski",30,"Marek Mostowiak");
-            teacher.setTeacher(instantTeacher);
+//            Teacher instantTeacher = new Teacher("Angielski",30,"Marek Mostowiak");
+//            teacher.setTeacher(instantTeacher);
 
             switch (scanner.nextInt()) {
                 case 1 -> System.out.println(class1.getStudentsList()); ///
                 case 2 -> class1.studentAddToList(scanner);  ///
                 case 3 -> class1.studentRemoveFromList(scanner);
-                case 4 -> Teacher.addTeacher(scanner);
-                case 5 -> Teacher.removeTeacher(scanner);
-              //  case 6 -> //System.out.println(teacher.teacherList);
+                case 4 -> teacher.addTeacher(scanner);
+                case 5 -> teacher.removeTeacher(scanner);
+                case 6 -> System.out.println(teacher.getTeacherList());
                 case 7 -> {
                     class1.createClass(); /// dziala
                     class1.assignStudentToClass();
