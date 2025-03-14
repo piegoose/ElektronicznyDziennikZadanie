@@ -1,7 +1,5 @@
 import java.util.*;
 
-// pola raczej prywatne i nie statyczne uzywamy getterow setterow, metody zazwczyaj sa publiczne nie statyczne
-// static to sie odnisi i dzieli dla wszyskich, pensja, wspoldzielony kontekst
 
 public class Class {
 
@@ -76,7 +74,7 @@ public class Class {
         }
     }
 
-
+    // unchecked
     private boolean studentCheck(Student foundStudent) {
         if (foundStudent == null) {
             System.out.println("Student o podanym imieniu nie istnieje!");

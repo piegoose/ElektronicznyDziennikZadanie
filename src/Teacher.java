@@ -46,11 +46,23 @@ public class Teacher {
 
     }
 
+    // unchecked excetion:
+
     public void removeTeacher(Scanner scanner) {
         scanner.skip("\n");
         System.out.println("Podaj jakiego nauczyicela chcesz usynac");
-        String removeT = scanner.nextLine();
-        teacherList.remove(findTeacherByName(removeT));
+
+        while (true) {
+            String removeT = scanner.nextLine();
+            if (findTeacherByName(removeT) != null) {
+                teacherList.remove(findTeacherByName(removeT));
+                System.out.println("Usunieto nacuzyciela " + removeT);
+                break;
+            } else {
+                System.out.println("ERROR: Nie znaleziono takiego nauczyciela");
+            }
+
+        }
 
     }
 
