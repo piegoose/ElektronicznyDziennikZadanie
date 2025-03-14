@@ -14,7 +14,7 @@ public class Main {
         boolean running = true;
         while (running) {
             MenuLauncher.menuLaunch();
-            Student instantStudent = new Student("Jedrzej Sikora",4);
+            Student instantStudent = new Student("Jedrzej Sikora", 4);
             class1.setStudentsList(instantStudent);
 //            Teacher instantTeacher = new Teacher("Angielski",30,"Marek Mostowiak");
 //            teacher.setTeacher(instantTeacher);
